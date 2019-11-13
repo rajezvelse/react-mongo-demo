@@ -1,1 +1,5 @@
-server/node_modules
+.vscode
+
+lerna-debug.log
+
+/node_modules
