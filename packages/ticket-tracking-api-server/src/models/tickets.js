@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var ticketSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+var ticketsSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        auto: true
+    },
     ticketNumber: {
         type: String,
         unique: true,
@@ -38,4 +41,4 @@ var ticketSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Ticket', ticketSchema);
+module.exports = mongoose.model('Tickets', ticketsSchema);

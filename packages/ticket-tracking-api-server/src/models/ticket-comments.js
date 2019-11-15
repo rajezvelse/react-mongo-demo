@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-var ticketCommentSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+var ticketCommentsSchema = new Schema({
+    _id: {
+        type: Schema.Types.ObjectId,
+        auto: true
+    },
     ticket: {
         type: Schema.Types.ObjectId,
-        ref: 'Ticket',
-        required: true
+        ref: 'Tickets'
     },
     comment: {
         type: String,
@@ -19,4 +21,4 @@ var ticketCommentSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('TicketComment', ticketCommentSchema);
+module.exports = mongoose.model('TicketComments', ticketCommentsSchema);
