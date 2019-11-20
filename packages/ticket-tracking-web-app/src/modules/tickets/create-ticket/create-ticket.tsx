@@ -72,7 +72,7 @@ class CreateTicket extends React.Component<any, any>  {
                 <Grid item lg={6} xs={12}>
 
                   {/* Mutation wrapper for posting data to the server */}
-                  <Mutation mutation={this.CREATE_TICKET_MUTATION}>
+                  <Mutation mutation={this.CREATE_TICKET_MUTATION} onCompleted={(result: any) => this.props.history.push('/tickets')}>
                     {(createTicket: Function) => (
 
                       // Form definition
@@ -87,13 +87,13 @@ class CreateTicket extends React.Component<any, any>  {
 
                           try {
                             // Post to API
-                            let result = await createTicket({
+                            await createTicket({
                               variables: {
                                 ticketData: values
                               }
                             });
                             // On success
-                            this.props.history.push('/tickets');
+                            // ...
                           }
                           catch (err) {
                             // On API error

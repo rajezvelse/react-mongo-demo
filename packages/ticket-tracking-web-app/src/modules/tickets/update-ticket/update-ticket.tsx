@@ -98,7 +98,7 @@ class UpdateTicket extends React.Component<any, any>  {
 
                       return (
                         //  Mutation wrapper for posting data to the server
-                        < Mutation mutation={this.UPDATE_TICKET_MUTATION} >
+                        < Mutation mutation={this.UPDATE_TICKET_MUTATION} onCompleted={(result: any) => this.props.history.push('/tickets')}>
                           {(updateTicket: Function) => (
 
                             // Form definition
@@ -113,14 +113,14 @@ class UpdateTicket extends React.Component<any, any>  {
 
                                 try {
                                   // Post to API
-                                  let result = await updateTicket({
+                                  await updateTicket({
                                     variables: {
                                       ticketId: ticketId,
                                       ticketData: values
                                     }
                                   });
                                   // On success
-                                  this.props.history.push('/tickets');
+                                  // ...
                                 }
                                 catch (err) {
                                   // On API error

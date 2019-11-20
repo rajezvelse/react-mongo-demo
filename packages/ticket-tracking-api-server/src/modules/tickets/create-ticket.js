@@ -10,7 +10,6 @@ var createTicketMutation = {
         ticketData: { type: new graphql.GraphQLNonNull(CreateTicketInput) }
     },
     resolve: async (source, { ticketData }, args, context) => {
-        console.log(ticketData)
 
         // Finding the last record
         let lastRecord = await Tickets.find()
