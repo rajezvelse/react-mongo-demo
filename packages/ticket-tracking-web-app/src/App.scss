@@ -1,0 +1,37 @@
+.container {
+  margin-top: 30px;
+}
+.section-title {
+  font-weight: bold;
+}
+.section-header {
+  position: relative;
+  border-bottom: 1px solid #e0e0e0;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.sectionHeaderButton {
+  position: absolute;
+  right: 50px;
+}
+.tableContainer {
+  padding: 10px;
+}
+.table {
+  border: "1px solid #e0e0e0";
+}
+.tableBodyRow:hover {
+  background: #eff0f1;
+}
+.tableHeaderCell {
+  background: "#8593a2";
+  color: "white";
+  font-size: 16px;
+  font-weight: bold;
+}
+.tableCellCenter {
+  text-align: center;
+}
+.actionButton {
+  margin-right: 15px;
+}

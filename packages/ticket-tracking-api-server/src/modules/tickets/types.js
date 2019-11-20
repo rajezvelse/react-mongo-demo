@@ -31,8 +31,18 @@ var ticketTypeFields = {
     status: {
         type: new graphql.GraphQLNonNull(TicketStatusType)
     },
-    createdAt: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
-    updatedAt: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) }
+    createdAt: {
+        type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+        resolve: (source) => {
+            return source.createdAt.toISOString()
+        }
+    },
+    updatedAt: {
+        type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+        resolve: (source) => {
+            return source.updatedAt.toISOString()
+        }
+    }
 };
 
 exports.TicketType = new graphql.GraphQLObjectType({

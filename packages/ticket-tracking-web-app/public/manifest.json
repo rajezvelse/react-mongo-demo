@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Ticket Tracking",
+  "name": "Web application for service tickets management",
   "icons": [
     {
       "src": "favicon.ico",

@@ -6,7 +6,12 @@ exports.TicketCommentType = new graphql.GraphQLObjectType({
     fields: {
         _id: { type: new graphql.GraphQLNonNull(graphql.GraphQLID) },
         comment: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
-        createdAt: { type: new graphql.GraphQLNonNull(graphql.GraphQLString) },
+        createdAt: {
+            type: new graphql.GraphQLNonNull(graphql.GraphQLString),
+            resolve: (source) => {
+                return source.createdAt.toISOString()
+            }
+        },
         ticketId: {
             type: new graphql.GraphQLNonNull(graphql.GraphQLID),
             resolve: (source) => {

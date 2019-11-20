@@ -1,25 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+import uniqueId from 'lodash/uniqueId';
+import { Container } from '@material-ui/core';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { ApolloProvider } from 'react-apollo';
+
+import { RouteConfig } from './interfaces/route-config';
+import RouteWithSubRoutes from './utils/RouteWithSubRoutes';
+import { AppRoutes } from './routing';
+
+import { apolloClient } from './config/apollo-client';
+import Toolbar from './modules/toolbar';
+
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={apolloClient}>
+      <Router>
+        {/* Top menu */}
+        <Toolbar />
+
+        <Container maxWidth="xl" className="container">
+          <Switch>
+            {/* Default redirection */}
+            <Route exact path="/">
+              <Redirect to="/tickets" />
+            </Route>
+
+            {AppRoutes.map((route: RouteConfig) =>
+              <RouteWithSubRoutes key={uniqueId()} {...route}></RouteWithSubRoutes>
+            )}
+          </Switch>
+        </Container>
+
+      </Router >
+    </ApolloProvider>
   );
 }
 

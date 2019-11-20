@@ -1,0 +1,14 @@
+.loading-error {
+  text-align: center;
+  margin: 100px 0;
+
+  .error-icon {
+    font-size: 6em;
+    color: #a55752;
+  }
+
+  p {
+    margin-top: 20px;
+    color: gray;
+  }
+}
