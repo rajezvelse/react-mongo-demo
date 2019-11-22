@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { gql } from 'apollo-boost';
 import { Query, QueryResult, Mutation } from 'react-apollo';
-import { Theme, Grid, Paper, Toolbar, Box, TextField, Button } from '@material-ui/core';
+import { Grid, Paper, Toolbar, Box, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import { Formik, ErrorMessage } from 'formik';
@@ -11,31 +11,7 @@ import * as Yup from 'yup';
 import DataLoading from 'src/utils/DataLoading';
 import DataFetchError from 'src/utils/DataFetchError';
 
-const styles = (theme: Theme) => ({
-  sectionHeader: {
-    position: 'relative' as any,
-    borderBottom: '1px solid #e0e0e0',
-    paddingLeft: '50px',
-    paddingRight: '50px'
-  },
-  sectionContainer: {
-    padding: `${theme.spacing(1)}px ${theme.spacing(5)}px`
-  },
-  inputGroup: {
-    margin: "30px"
-  },
-  formAction: {
-    'text-align': 'right',
-    margin: '30px',
-    '& button, & a': {
-      marginLeft: '30px',
-      'text-transform': 'none'
-    }
-  },
-  formError: {
-    color: '#f44336'
-  }
-});
+import { styles } from './update-ticket.styles';
 
 class UpdateTicket extends React.Component<any, any>  {
   GET_TICKET_QUERY = gql`

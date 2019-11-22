@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import uniqueId from 'lodash/uniqueId';
-import { Theme, Grid, Paper, Table, TableHead, TableBody, TableRow, TableCell, Toolbar, Button, Box } from '@material-ui/core';
+import { Grid, Paper, Table, TableHead, TableBody, TableRow, TableCell, Toolbar, Button, Box } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import Moment from 'react-moment';
 import { gql } from 'apollo-boost';
@@ -14,47 +14,7 @@ import DataLoading from 'src/utils/DataLoading';
 import DataFetchError from 'src/utils/DataFetchError';
 import TitleCase from 'src/utils/TitleCase';
 
-const styles = (theme: Theme) => ({
-  sectionHeader: {
-    position: 'relative' as any,
-    borderBottom: '1px solid #e0e0e0',
-    paddingLeft: '50px',
-    paddingRight: '50px'
-  },
-  sectionHeaderButtons: {
-    position: "absolute" as any,
-    right: '50px',
-    'text-align': 'right',
-    '& button, & a': {
-      marginLeft: '15px',
-      'text-transform': 'none'
-    }
-  },
-  tableContainer: {
-    padding: theme.spacing(5)
-  },
-  table: {
-    border: "1px solid #e0e0e0"
-  },
-  tableBodyRow: {
-    "&:hover": {
-      background: "#eff0f1"
-    }
-  },
-  tableHeaderCell: {
-    background: "#8593a2",
-    color: "white",
-    fontSize: '16px',
-    'font-weight': 'bold'
-  },
-  tableCellCenter: {
-    'text-align': 'center'
-  },
-  actionButton: {
-    marginRight: theme.spacing(1),
-    'text-transform': 'none'
-  }
-});
+import { styles } from './tickets-list.styles';
 
 
 class TicketsList extends React.Component<any, any>  {

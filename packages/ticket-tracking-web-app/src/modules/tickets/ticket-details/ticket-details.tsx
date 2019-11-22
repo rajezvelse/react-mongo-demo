@@ -3,10 +3,11 @@ import * as React from 'react';
 import uniqueId from 'lodash/uniqueId';
 import { gql } from 'apollo-boost';
 import { Query, QueryResult, Mutation, MutationResult } from 'react-apollo';
-import { Theme, Grid, Paper, Toolbar, Box, Typography, Chip, TextField, Button, Modal, List, ListItem, ListItemText, ListItemAvatar } from '@material-ui/core';
+import { Grid, Paper, Toolbar, Box, Typography, Chip, TextField, Button, Modal, List, ListItem, ListItemText, ListItemAvatar } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import Moment from 'react-moment';
 
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -17,101 +18,7 @@ import DataLoading from 'src/utils/DataLoading';
 import DataFetchError from 'src/utils/DataFetchError';
 import TitleCase from 'src/utils/TitleCase';
 
-const styles = (theme: Theme) => ({
-  sectionHeader: {
-    position: 'relative' as any,
-    borderBottom: '1px solid #e0e0e0',
-    paddingLeft: '50px',
-    paddingRight: '50px'
-  },
-  sectionHeaderButtons: {
-    position: "absolute" as any,
-    right: '50px',
-    'text-align': 'right',
-    '& button, & a': {
-      marginLeft: '15px',
-      'text-transform': 'none'
-    }
-  },
-  sectionContainer: {
-    padding: `${theme.spacing(1)}px ${theme.spacing(6)}px`
-  },
-  dataTitle: {
-    margin: '20px 0'
-  },
-  dataChips: {
-    marginBottom: '20px',
-    '&>div': {
-      marginRight: '10px',
-      'font-weight': 'bold'
-    }
-  },
-  dataFieldTitle: {
-    'font-weight': 'bold'
-  },
-  dataText: {
-    marginBottom: '20px',
-    'text-indent': '30px'
-  },
-  commentsList: {
-    '& li:not(:first-child)': {
-      borderTop: '1px dashed #cbcbcb'
-    },
-    '& li:last-child': {
-      borderTop: 'none'
-    }
-  },
-  commentItem: {
-    margin: '15px 47px',
-    width: 'auto'
-  },
-  commentItemIcon: {
-    fontSize: '2em' as any,
-    color: '#cbcbcb'
-
-  },
-  commentForm: {
-    width: '100%'
-  },
-  inputGroup: {
-    margin: "10px 30px 15px 30px"
-  },
-  formAction: {
-    'text-align': 'right',
-    margin: '0 30px 30px 30px',
-    '& button': {
-      marginLeft: '30px',
-      textTransform: 'none' as any
-    }
-  },
-  formError: {
-    color: '#f44336'
-  },
-  deleteModal: {
-    background: '#fff',
-    width: "30%",
-    height: "auto",
-    padding: "30px",
-    borderRadius: "4px",
-    marginLeft: "35%",
-    position: "relative" as any,
-    marginTop: "150px",
-    border: "none",
-    textAlign: "center" as any,
-  },
-  modalButtons: {
-    marginTop: '20px',
-    '& button': {
-      marginRight: '15px',
-      textTransform: 'none' as any
-    }
-  },
-  modalErrorText: {
-    color: '#a55752',
-    marginTop: '15px',
-    fontSize: '12px'
-  }
-});
+import { styles } from './ticket-details.styles';
 
 class TicketDetails extends React.Component<any, any>  {
   GET_TICKET_QUERY = gql`
@@ -249,6 +156,10 @@ class TicketDetails extends React.Component<any, any>  {
                       <Grid container>
                         <Grid item lg={12} xs={12}>
                           <Typography variant="h5" component="h3" className={classes.dataTitle}>{data.subject} (#{data.ticketNumber})</Typography>
+                          <Typography component="span" className={classes.dataTitleSuffix}>
+                            Created: <Moment date={data.createdAt} format="DD-MMM-YYYY HH:mm a" />,
+                            &ensp; Updated: <Moment date={data.updatedAt} format="DD-MMM-YYYY HH:mm a" />
+                          </Typography>
 
                           <Box className={classes.dataChips}>
                             <Chip

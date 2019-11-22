@@ -1,37 +1,12 @@
 import * as React from 'react';
-import { Theme, Grid, Paper, Toolbar, Box, TextField, Button } from '@material-ui/core';
+import { Grid, Paper, Toolbar, Box, TextField, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-
-const styles = (theme: Theme) => ({
-  sectionHeader: {
-    position: 'relative' as any,
-    borderBottom: '1px solid #e0e0e0',
-    paddingLeft: '50px',
-    paddingRight: '50px'
-  },
-  sectionContainer: {
-    padding: `${theme.spacing(1)}px ${theme.spacing(5)}px`
-  },
-  inputGroup: {
-    margin: "30px"
-  },
-  formAction: {
-    'text-align': 'right',
-    margin: '30px',
-    '& button, & a': {
-      marginLeft: '30px',
-      'text-transform': 'none'
-    }
-  },
-  formError: {
-    color: '#f44336'
-  }
-});
+import { styles } from './create-ticket.styles';
 
 class CreateTicket extends React.Component<any, any>  {
   // Form validation schema
