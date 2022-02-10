@@ -40,7 +40,7 @@
     "@types/react-router-dom": "^5.1.2",
     "@types/yup": "^0.26.24",
     "create-react-component-folder": "^0.1.30",
-    "node-sass": "^4.13.0"
+    "node-sass": "^7.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
